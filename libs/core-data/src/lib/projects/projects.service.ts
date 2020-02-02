@@ -7,7 +7,7 @@ const BASE_URL = 'https://server-30-x-30.herokuapp.com/';
   providedIn: 'root'
 })
 export class ProjectsService {
-  model = 'phones'
+  model = 'computers'
 
   constructor(private httpClient: HttpClient) { }
 
@@ -17,6 +17,11 @@ export class ProjectsService {
 
   all() {
     return this.httpClient.get(this.getUrl())
+  }
+
+
+  findOne(projectId) {
+    return this.httpClient.get(this.getUrlForId(projectId));
   }
 
   create(project) {

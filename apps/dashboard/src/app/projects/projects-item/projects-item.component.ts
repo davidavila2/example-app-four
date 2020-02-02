@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProjectsService } from '@dashboard/core-data';
 
 @Component({
   selector: 'dashboard-projects-item',
@@ -6,10 +8,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./projects-item.component.scss']
 })
 export class ProjectsItemComponent implements OnInit {
+  _project$;
+  public get project$() {
+    return this._project$;
+  }
+  public set project$(value) {
+    this._project$ = value;
+  }
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private projectService: ProjectsService,
+  ) { }
 
   ngOnInit() {
+    this.route.params.subscribe(param => {
+      const id = param['id'];
+      this.project$ = this.projectService.findOne(id);
+    })
+  }
+
+  goBackToProjects() {
+    this.router.navigate(['/projects']);
   }
 
 }
