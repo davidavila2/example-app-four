@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Project, ProjectsService, emptyProject } from '@dashboard/core-data';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'dashboard-projects',
@@ -70,10 +70,10 @@ export class ProjectsComponent implements OnInit {
   private initForm() {
     this.form = this.formBuilder.group({
       id: null,
-      title: [''],
-      details: [''],
-      coolLevel: [''],
-      approved: ['']
+      title: ['', Validators.compose([Validators.required])],
+      details: ['', Validators.compose([Validators.required])],
+      coolLevel: ['', Validators.compose([Validators.required])],
+      approved: ['', Validators.compose([Validators.required])]
     });
   }
 

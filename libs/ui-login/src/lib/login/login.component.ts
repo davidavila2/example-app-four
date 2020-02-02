@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'dashboard-ui-login',
@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit {
 
   private initForm() {
     this.form = this.formBuilder.group({
-      username: [''],
-      password: ['']
+      username: ['', Validators.compose([Validators.required])],
+      password: ['', Validators.compose([Validators.required])]
     })
   }
 
