@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Project } from '@dashboard/core-data';
 import { Form } from '@angular/forms';
 
@@ -14,7 +14,7 @@ export class ProjectsDetailsComponent {
     if (value) this.originalTitle = value.title;
     this.currentProject = Object.assign({}, value)
   }
-  @Input() form: Form;
+  @Input() form;
 
   @Output() saved = new EventEmitter();
   @Output() cancelled = new EventEmitter();

@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreDataModule } from '@dashboard/core-data';
 import { MaterialModule } from '@dashboard/material';
 import { UiLoginModule } from '@dashboard/ui-login';
+
 import { RoutingModule } from './routing.module';
 import { AppComponent } from './app.component';
 import { ProjectsComponent } from './projects/projects.component';
