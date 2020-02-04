@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Project, ProjectsService, emptyProject } from '@dashboard/core-data';
+import { Project, ProjectsService, emptyProject, NotifyService } from '@dashboard/core-data';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -12,7 +12,7 @@ export class ProjectsComponent implements OnInit {
   selectedProject: Project;
   form: FormGroup;
 
-  constructor(private projectsService: ProjectsService, private formBuilder: FormBuilder) { }
+  constructor(private projectsService: ProjectsService, private formBuilder: FormBuilder, private notify: NotifyService) { }
 
   resetProject() {
     this.form.reset();
@@ -48,6 +48,7 @@ export class ProjectsComponent implements OnInit {
         this.getProjects();
         this.resetProject();
       });
+      this.notify.notification(`You have updated ${this.form.value.title}`);
   }
 
   createProject() {
@@ -56,11 +57,13 @@ export class ProjectsComponent implements OnInit {
         this.getProjects();
         this.resetProject();
       });
+      this.notify.notification(`You have created ${this.form.value.title}`);
   }
 
   deleteProject(project) {
     this.projectsService.delete(project.id)
       .subscribe(() => this.getProjects());
+      this.notify.notification(`You have deleted ${project.title}`);
   }
 
   cancel() {

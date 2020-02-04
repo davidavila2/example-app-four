@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Project } from '@dashboard/core-data';
-import { Form } from '@angular/forms';
 
 @Component({
   selector: 'dashboard-projects-details',

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { NotifyService } from '@dashboard/core-data';
 
 @Component({
   selector: 'dashboard-ui-login',
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private notify: NotifyService
   ) { }
 
   ngOnInit() {
@@ -23,6 +25,7 @@ export class LoginComponent implements OnInit {
   login() {
     if (this.form.invalid) return;
     this.router.navigate(['/projects']);
+    this.notify.notification(`${this.form.value} has logged in`);
   }
 
   private initForm() {
