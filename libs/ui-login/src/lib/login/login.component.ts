@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   login() {
     if (this.form.invalid) return;
     this.router.navigate(['/projects']);
-    this.notify.notification(`${this.form.value} has logged in`);
+    this.notify.notification(`${this.form.value.username} has logged in`);
   }
 
   private initForm() {
