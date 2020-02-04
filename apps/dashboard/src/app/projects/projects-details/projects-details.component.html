@@ -3,7 +3,7 @@
     <mat-card-title>
       <h1>
         <span *ngIf="currentProject.id; else elseBlock">{{originalTitle}}</span>
-        <ng-template #elseBlock>Select a Phone</ng-template>
+        <ng-template #elseBlock>Select a computer</ng-template>
       </h1>
     </mat-card-title>
   </mat-card-header>
@@ -18,7 +18,7 @@
         <mat-error *ngIf="form.get('details').hasError('required')">Required Field</mat-error>
       </mat-form-field>
       <section class="full-width">
-        <h4>Cool Level: {{currentProject.coolLevel}}</h4>
+        <h4 formControlName="coolLevel">Cool Level: {{currentProject.coolLevel}}</h4>
         <mat-slider class="full-width" min="0" max="100" thumbLabel name="tasteLevel" formControlName="coolLevel">
         </mat-slider>
         <mat-error *ngIf="form.get('coolLevel').hasError('required')">Required Field</mat-error>
